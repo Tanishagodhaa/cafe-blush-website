@@ -1,0 +1,153 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Local backend for development
+local_backend: true
+
+# Media files will be stored in the repo under public/images
+media_folder: "public/images"
+public_folder: "/images"
+
+# Site URL for preview
+site_url: https://cafeblush.in
+
+# Logo for CMS
+logo_url: /images/logo.png
+
+collections:
+  # Menu Items
+  - name: "menu"
+    label: "Menu Items"
+    label_singular: "Menu Item"
+    folder: "content/menu"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Price (₹)", name: "price", widget: "number", value_type: "int" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Starters & Sides", value: "starters" }
+          - { label: "Sandwiches & Burgers", value: "sandwiches" }
+          - { label: "Beverages", value: "beverages" }
+          - { label: "Desserts", value: "desserts" }
+          - { label: "Snacks", value: "snacks" }
+      - label: "Dietary Tags"
+        name: "dietary"
+        widget: "select"
+        multiple: true
+        options:
+          - { label: "Vegetarian", value: "veg" }
+          - { label: "Contains Egg", value: "egg" }
+          - { label: "Contains Dairy", value: "dairy" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Available", name: "available", widget: "boolean", default: true }
+
+  # Offers
+  - name: "offers"
+    label: "Offers & Deals"
+    label_singular: "Offer"
+    folder: "content/offers"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Valid From", name: "validFrom", widget: "datetime", date_format: "YYYY-MM-DD" }
+      - { label: "Valid Until", name: "validUntil", widget: "datetime", date_format: "YYYY-MM-DD" }
+      - { label: "Active", name: "active", widget: "boolean", default: true }
+
+  # Gallery
+  - name: "gallery"
+    label: "Gallery Images"
+    label_singular: "Gallery Image"
+    folder: "content/gallery"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Image", name: "src", widget: "image" }
+      - { label: "Alt Text", name: "alt", widget: "string" }
+      - { label: "Caption", name: "caption", widget: "string", required: false }
+      - { label: "Order", name: "order", widget: "number", default: 0 }
+
+  # Reviews
+  - name: "reviews"
+    label: "Customer Reviews"
+    label_singular: "Review"
+    folder: "content/reviews"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Customer Name", name: "name", widget: "string" }
+      - { label: "Rating (1-5)", name: "rating", widget: "number", min: 1, max: 5, default: 5 }
+      - { label: "Comment", name: "comment", widget: "text" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD" }
+      - label: "Source"
+        name: "source"
+        widget: "select"
+        options:
+          - { label: "Google", value: "Google" }
+          - { label: "Zomato", value: "Zomato" }
+          - { label: "Swiggy", value: "Swiggy" }
+          - { label: "Facebook", value: "Facebook" }
+          - { label: "Walk-in", value: "Walk-in" }
+        required: false
+
+  # Site Settings
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "Business Information"
+        name: "business"
+        file: "content/settings/business.json"
+        fields:
+          - { label: "Business Name", name: "name", widget: "string", default: "Cafe Blush" }
+          - { label: "Tagline", name: "tagline", widget: "string", default: "Good food. Good mood." }
+          - { label: "Phone Number", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - label: "Address"
+            name: "address"
+            widget: "object"
+            fields:
+              - { label: "Street Address", name: "street", widget: "string" }
+              - { label: "City", name: "city", widget: "string" }
+              - { label: "State", name: "state", widget: "string" }
+              - { label: "Country", name: "country", widget: "string" }
+
+      - label: "Opening Hours"
+        name: "hours"
+        file: "content/settings/hours.json"
+        fields:
+          - { label: "Opening Time (24hr format)", name: "open", widget: "string", default: "11:00" }
+          - { label: "Closing Time (24hr format)", name: "close", widget: "string", default: "22:00" }
+          - { label: "Display Opening Time", name: "displayOpen", widget: "string", default: "11:00 AM" }
+          - { label: "Display Closing Time", name: "displayClose", widget: "string", default: "10:00 PM" }
+
+      - label: "Social Media"
+        name: "social"
+        file: "content/settings/social.json"
+        fields:
+          - { label: "Instagram URL", name: "instagram", widget: "string" }
+          - { label: "Instagram Handle", name: "instagramHandle", widget: "string" }
+          - { label: "Facebook URL", name: "facebook", widget: "string" }
+
+      - label: "Delivery Partners"
+        name: "delivery"
+        file: "content/settings/delivery.json"
+        fields:
+          - { label: "Swiggy Link", name: "swiggy", widget: "string" }
+          - { label: "Zomato Link", name: "zomato", widget: "string" }
+
+      - label: "About Content"
+        name: "about"
+        file: "content/settings/about.json"
+        fields:
+          - { label: "Main Description", name: "main", widget: "text" }
+          - { label: "Location Note", name: "location", widget: "string" }
+          - { label: "Our Story", name: "story", widget: "text" }

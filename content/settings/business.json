@@ -1,0 +1,12 @@
+{
+  "name": "Cafe Blush",
+  "tagline": "Good food. Good mood.",
+  "phone": "+91 73858 47999",
+  "email": "cafeblushjalna@gmail.com",
+  "address": {
+    "street": "RWW3+WR5, Dr Rajendra Prasad Rd",
+    "city": "Jalna",
+    "state": "Maharashtra",
+    "country": "India"
+  }
+}
