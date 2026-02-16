@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
+  <rect width="180" height="180" rx="35" fill="#E8B4B8"/>
+  <circle cx="90" cy="70" r="32" fill="#fff"/>
+  <ellipse cx="90" cy="70" rx="25" ry="22" fill="#8B4513"/>
+  <ellipse cx="90" cy="65" rx="16" ry="10" fill="#D2B48C" fill-opacity="0.5"/>
+  <path d="M62 102 Q90 120 118 102 L122 135 Q90 155 58 135 Z" fill="#fff"/>
+  <text x="90" y="168" font-family="Georgia, serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">Café Blush</text>
+</svg>
