@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { MenuItem } from '@/lib/config';
 import { formatPrice } from '@/lib/utils';
 
@@ -36,7 +37,13 @@ export default function MenuItemCard({ item }: MenuItemCardProps) {
   };
 
   return (
-    <article className="menu-item-card group" role="article" aria-label={item.name}>
+    <motion.article 
+      className="menu-item-card group" 
+      role="article" 
+      aria-label={item.name}
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.2 }}
+    >
       {/* Image */}
       <div className="relative h-48 overflow-hidden">
         {item.image ? (
@@ -56,9 +63,14 @@ export default function MenuItemCard({ item }: MenuItemCardProps) {
         
         {/* Featured Badge */}
         {item.featured && (
-          <div className="absolute top-3 right-3 badge badge-gold">
+          <motion.div 
+            className="absolute top-3 right-3 badge badge-gold"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+          >
             ⭐ Popular
-          </div>
+          </motion.div>
         )}
       </div>
 
@@ -79,16 +91,19 @@ export default function MenuItemCard({ item }: MenuItemCardProps) {
 
         {/* Dietary Tags */}
         <div className="flex flex-wrap gap-1">
-          {item.dietary.map((tag) => (
-            <span
+          {item.dietary.map((tag, index) => (
+            <motion.span
               key={tag}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
               className={`badge text-xs ${getDietaryBadgeClass(tag)}`}
             >
               {getDietaryLabel(tag)}
-            </span>
+            </motion.span>
           ))}
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 }

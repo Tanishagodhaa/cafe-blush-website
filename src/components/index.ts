@@ -12,3 +12,4 @@ export { default as OffersCarousel } from './OffersCarousel';
 export { default as ReviewsSection } from './ReviewsSection';
 export { default as ContactForm } from './ContactForm';
 export { default as MapEmbed } from './MapEmbed';
+export { default as AnimatedSection, StaggerContainer, StaggerItem, HoverEffect, PulseWrapper, FloatWrapper } from './AnimatedSection';
